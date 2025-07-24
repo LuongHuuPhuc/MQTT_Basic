@@ -59,13 +59,15 @@ ws://broker.hivemq.com:8000/mqtt      (WebSocket)
 mqtt://broker.hivemq.com:1883         (TCP truyền thống)
 ``` 
 4. Kiến trúc tổng quan của MQTT
+
 |Vai trò | Thiết bị | Mô tả |
 |--------|----------|-------|
 |Publisher| Esp32 |Gửi dữ liệu lên broker |
 |Broker | Mosquitto/EMQX/HiveMQ | Trung gian nhận và phân phối dữ liệu |
 |Subcriber| Web app/Python Backend | Nhận dữ liệu để xử lý hoặc hiển thị waveform |
 
-5. Lý do dùng MQTT với Esp32 
+5. Lý do dùng MQTT với Esp32
+   
 | Ưu điểm | Mô tả |
 |---------|-------|
 |Giao thức nhẹ | Rất phù hợp cho vi điều khiển Esp32 |
@@ -79,7 +81,8 @@ mqtt://broker.hivemq.com:1883         (TCP truyền thống)
 * Esp32 publish dữ liệu (theo thời gian thực) lên một topic, ví dụ `esp32/data`
 * Server của bạn hoặc client (Python/web) subcribe vào topic đó để nhận và xử lý 
 
-7. Tổng quan mối quan hệ 
+7. Tổng quan mối quan hệ
+   
 |Thành phần| Vai trò chính |
 |----------|---------------|
 |MQTT broker| Trung tâm tiếp nhận và phân phối dữ liệu |
