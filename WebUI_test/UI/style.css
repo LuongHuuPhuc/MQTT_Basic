@@ -1,0 +1,179 @@
+body {
+  font-family: "Segoe UI", Tahoma, Verdana, Geneva, sans-serif;
+  background-color: #f8f9fa; /* Mau nen */
+  background-image: url("D:/Esp-idf/MQTT_basic/WebUI_test/ab67616d0000b2739b92abb6aa071bdba8870e3f.jpg"); /* Duong dan toi hinh anh nen */
+  background-size: cover; /* De anh nen phu toan man hinh */
+  background-repeat: no-repeat; /* Khong lap lai anh nen */
+  background-position: center;
+  background-attachment: relative;
+  color: #333;
+  margin: 0;
+  padding: 0; 
+}
+
+
+.wrapper {
+  margin: 0 auto;
+  margin-top: 50px; /* Khoang cach tren cung */
+  margin-bottom: 60px; /* Khoang cach duoi cung */
+  width: 60%;
+  padding: 50px;    /* Khoang cach ben trong */                   
+  background: rgba(255, 255, 255, 0.7);  /* Trong mo hon */
+  backdrop-filter: blur(5px); /* Tao hieu ung kinh mo */
+  -webkit-backdrop-filter: blur(5px);
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2); /* Bo sung bong cho wrapper */
+  border-radius: 50px; /*Bo goc cho wrapper */
+  animation: fadeInUp 1.2s ease-out;
+  transition: all 0.3s ease;
+}
+
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(150px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.history-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  max-height: 100px;
+  overflow-y: auto;
+  border-radius: 5px;
+  background-color: white;
+  position: absolute; /* Cho phep dinh vi tuyet doi, can theo phan cha gan nhat  */
+  display: none; /* Ban dau de an */
+  z-index: 10;
+  width: 200px;
+}
+
+
+.history-list li {
+  padding: 5px;
+  cursor: pointer;
+}
+
+
+.history-list li:hover {
+  background-color: lightpink;
+}
+
+
+form strong,
+form b {
+  display: block;
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+
+input[type=text],
+input[type=password] {
+  width: 100%;
+  padding: 10px 10px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: 0.3s; 
+  margin: 8px 0;
+}
+
+
+input[type=text]:focus,
+input[type=password]:focus{
+  border-color: #66afe9; /* Mau vien khi focus */
+  background-color:#e9f7fe; /* Mau nen khi focus */
+  outline: none;
+}
+
+
+#connect-btn,
+input[type=button] {
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 16px;
+  font-size: 14px;
+  margin: 10px 5px 0 0;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+
+#connect-btn:hover,
+input[type=button]:hover {
+  background-color: #ad4747; /* Giao dien CSS khi chuou duoc di den */
+}
+
+
+#Main_Heading {
+  text-align: center;
+  color: #343a34;
+  margin-bottom: 5px;
+}
+
+
+#Sub_Heading {
+  text-align: center;
+  color: #343a34;
+  margin-top: 2px;
+  font-weight: bold;
+}
+
+
+#messages {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 100%;
+  display: inline-block;
+  border: 1px solid #ccc;
+  max-height: 250px;
+  min-height: 250px;
+  overflow-y: scroll;
+  overflow: scroll;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+}
+
+
+#history-messages {
+  margin-top: 10px;
+  padding: 12px; /* Padding la khoang cach ben trong cua the */
+  width: 100%;
+  display: inline-block; /* Day la mot the inline-block, cho phep no co the co chieu rong va chieu cao */
+  border: 1px solid #ccc; /* Duong vien cua the */
+  max-height: 100px; /* Chieu cao toi da cua the */
+  min-height: 100px; /* Chieu cao toi thieu cua the */
+  overflow-y: scroll; /* Cho phep cuon theo chieu doc neu noi dung */
+}
+
+
+#history-table {
+  border-collapse: collapse; /* Bo sung de cac duong vien cua bang khong bi lap lai */
+  width: 100%; 
+  max-width: 200px;
+}
+
+
+#history-table th, #history-table td { /* th-table header, td-table-data. Hai bang nay nhan style giong nhau*/
+  border: 1px solid #999; /* Duong vien cua cac o trong bang */
+  padding: 8px; /* Khoang cach ben trong cua cac o */
+  text-align: left; /* Canh le noi dung trong cac o */
+}
+
+
+.connected {
+  background-color: orange !important;
+}

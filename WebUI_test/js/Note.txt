@@ -1,0 +1,34 @@
+- mqtt.min.js là một thư viện JavaScript đã được nén (minified) để sử dụng trong trình duyệt web, cung cấp khả năng kết nối, gửi và nhận dữ liệu thông qua giao thức MQTT
+- Đây là phiên bản browser của thư viện MQTT.js trong JavaScript (thường dùng với Node.js)
+- Thường được cung cấp qua CDN như: "https://unpkg.com/mqtt/dist/mqtt.min.js"
+
+Chức năng: 
++ Cho phép trình duyệt web kết nối tới MQTT broker, gửi/nhận dữ liệu theo kiểu publish/subcribe
++ Cung cấp các hàm để kết nối với MQTT broker (thường là thông qua Websocket)
++ Đăng ký (Subcribe) một topic để nhận dữ liệu hoặc gửi (publish) một message đến một chủ đề nào đó...
+
+position: relative;
+- Cho phép di chuyển phần tử so với vị trí ban đầu của nó 
+- Các thuộc tính bottom, top, left, right có thể được sử dụng để điều chỉnh vị trí của nó so với vị trí ban đầu
+
+position: static;
+- Không thay đổi gì, mặc định các phần tử nằm theo luồng bình thường của tài liệu. 
+- Các thuộc tính bottom, top, left, right không có tác dụng gì
+
+position: absolute;
+- Phần tử sẽ được định vị dựa trên phần tử cha gần nhất có thuộc tính position được thiết lập khác static (nếu không có 
+phần tử cha, nó sẽ dựa vào phần tử gốc của trang). 
+- Các thuộc tính top, bottom, left, right được sử dụng để xác định vị trí của phần tử
+- Phần tử có position: absolute sẽ bị loại bỏ khỏi luồng tài liệu, tức là các phần tử khác sẽ không còn coi như nó tồn tại.
+
+position: fixed;
+- Tương tự như absolute, position: fixed cũng loại bỏ phần tử khỏi luồng tài liệu.
+- Tuy nhiên, phần tử có position: fixed sẽ được định vị dựa trên viewport (cửa sổ trình duyệt) và luôn cố định ở một vị trí, bất kể người dùng cuộn trang.
+
+innerHTML: 
+- Trả về: Chuỗi HTML đầy đủ của phần tử, bao gồm các thẻ HTML và nội dung bên trong
+- Thiết lập: Cho phép bạn thay thế hoặc thêm nội dung HTML mới vào phần tử. Khi thiết lập, trình duyệt sẽ phân tích và hiển thị HTML mới
+
+textContent: 
+- Trả về văn bản thuần túy của HTML, bỏ qua các thẻ HTML
+- Thiết lập: Cho phép bạn thay thế hoặc thêm văn bản thuần túy vào phần tử. Khi thiết lập, trình duyệt sẽ hiển thị văn bản đó mà không cần diễn giải HTML
