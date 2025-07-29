@@ -1,7 +1,7 @@
 body {
   font-family: "Segoe UI", Tahoma, Verdana, Geneva, sans-serif;
   background-color: #f8f9fa; /* Mau nen */
-  background-image: url("/bgr_image/ab67616d0000b2739b92abb6aa071bdba8870e3f.jpg"); /* Duong dan toi hinh anh nen */
+  background-image: url("bgr_image/ab67616d0000b2739b92abb6aa071bdba8870e3f.jpg"); /* Duong dan toi hinh anh nen */
   background-size: cover; /* De anh nen phu toan man hinh */
   background-repeat: no-repeat; /* Khong lap lai anh nen */
   background-position: center;

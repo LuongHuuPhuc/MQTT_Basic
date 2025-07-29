@@ -1,16 +1,12 @@
 {
-  "version": 2,
-  "public": true, 
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" }
+  ],
   "builds": [
-    {
-      "src": "UI/index.html",
-      "use": "@vercel/static"
-    }
+    { "src": "UI/index.html", "use": "@vercel/static" }
   ],
   "routes": [
-    {"src": "/js/(.*)", "dest": "/js/$1"},
-    {"src": "/bgr_image/(.*)", "dest": "/bgr_image/$1"},
-    {"src": "UI/(.*)", "dest": "UI/$1"},
-    {"src": "/", "dest": "UI/index.html"}
+    { "src": "/(.*)", "dest": "/UI/$1" }
   ]
 }
