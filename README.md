@@ -17,6 +17,7 @@ Socket là đối tượng đại diện cho *kênh truyền tải* trong mạng
 * Phù hợp với: Web (http, https), Email (SMTP), MQTT (mặc định), Truyền file.
 
 🟢 Ưu điểm: Đảm bảo toàn vẹn dữ liệu.
+
 🔴 Nhược điểm: Tốc độ hơi chậm hơn do phải xác nhận.
 
 ## 3. Giao thức UDP (Uset Datagram Protocol) - Giao thức không kết nối ##
@@ -25,6 +26,7 @@ Socket là đối tượng đại diện cho *kênh truyền tải* trong mạng
 * Phù hợp với: Video stream, Game,...giao tiếp trong mạng nội bộ cần tốc độ cao
 
 🟢 Ưu điểm: Rất nhanh, ít trễ.
+
 🔴 Nhược điểm: Dễ mất gói, không đáng tin cậy.
 
 ## 4. MQTT trên TCP ##
@@ -56,16 +58,18 @@ Ví dụ:
 ws://broker.hivemq.com:8000/mqtt      (WebSocket)
 mqtt://broker.hivemq.com:1883         (TCP truyền thống)
 ``` 
-4. Kiến trúc tổng quan của MQTT 
-|Vai trò  | Thiết bị       | Mô tả              |
-|---------|----------------|--------------------|
-|Publisher| Esp32          |Gửi dữ liệu lên broker |
-|Broker   | Mosquitto/EMQX/HiveMQ | Trung gian nhận và phân phối dữ liệu |
+4. Kiến trúc tổng quan của MQTT
+
+|Vai trò | Thiết bị | Mô tả |
+|--------|----------|-------|
+|Publisher| Esp32 |Gửi dữ liệu lên broker |
+|Broker | Mosquitto/EMQX/HiveMQ | Trung gian nhận và phân phối dữ liệu |
 |Subcriber| Web app/Python Backend | Nhận dữ liệu để xử lý hoặc hiển thị waveform |
 
-5. Lý do dùng MQTT với Esp32 
-| Ưu điểm | Mô tả               |
-|---------|---------------------|
+5. Lý do dùng MQTT với Esp32
+   
+| Ưu điểm | Mô tả |
+|---------|-------|
 |Giao thức nhẹ | Rất phù hợp cho vi điều khiển Esp32 |
 |Thời gian thực| Dữ liệu được đẩy lên ngay lập tức |
 |Hỗ trợ nhiều client | Nhiều thiết bị có thể cùng đọc/ghi vào 1 topic |
@@ -77,9 +81,10 @@ mqtt://broker.hivemq.com:1883         (TCP truyền thống)
 * Esp32 publish dữ liệu (theo thời gian thực) lên một topic, ví dụ `esp32/data`
 * Server của bạn hoặc client (Python/web) subcribe vào topic đó để nhận và xử lý 
 
-7. Tổng quan mối quan hệ 
-|Thành phần   | Vai trò chính |
-|-------------|---------------|
+7. Tổng quan mối quan hệ
+   
+|Thành phần| Vai trò chính |
+|----------|---------------|
 |MQTT broker| Trung tâm tiếp nhận và phân phối dữ liệu |
 |Publisher |Thiết bị gửi dữ liệu lên broker (Esp32 gửi dữ liệu lên chẳng hạn) |
 |Subcriber | Thiết bị nhận dữ liệu từ broker (ứng dụng web, socket) |
