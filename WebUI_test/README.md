@@ -48,3 +48,5 @@ Khi kết nối MQTT với TLS, quá trình sẽ như sau:
 ### MẸO DỄ NHỚ ###
 *MQTT + TLS = MQTTs* (giống như HTTP + TLS = HTTPS)
 
+# URL Web # 
+https://mqtt-basic.vercel.app/
