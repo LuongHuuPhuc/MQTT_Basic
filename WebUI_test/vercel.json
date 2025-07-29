@@ -1,6 +1,16 @@
 {
-  "rewrites": [
-    { "source": "/", "destination": "UI/index.html" }
+  "version": 2,
+  "public": true, 
+  "builds": [
+    {
+      "src": "UI/index.html",
+      "use": "@vercel/static"
+    }
   ],
-  "cleanUrls": true
+  "routes": [
+    {"src": "/js/(.*)", "dest": "/js/$1"},
+    {"src": "/bgr_image/(.*)", "dest": "/bgr_image/$1"},
+    {"src": "UI/(.*)", "dest": "UI/$1"},
+    {"src": "/", "dest": "UI/index.html"}
+  ]
 }
