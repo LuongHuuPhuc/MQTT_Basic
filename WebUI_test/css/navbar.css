@@ -1,0 +1,75 @@
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: flex-end; /* Can cac items xuong duoi cung */
+  height: 60px; /* Co dinh chieu cao thanh navbar */
+  background-color: #ffffff;
+  border-bottom: 1px solid #ddd;
+  padding: 0 20px;
+}
+
+.navbar a {
+  margin-right: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  padding: 0 12px;
+  line-height: 60px; /* Can theo chieu cao cua navbar */
+  border-radius: 4px;
+}
+
+.navbar .logo{
+  display: flex;
+  align-items: center;
+}
+
+.navbar .logo img {
+  width: 50px;
+  height: 50px;
+  margin-right: 8px;
+}
+
+.navbar .logo .site-name {
+  font-weight: bold;
+  font-size: 18px;
+  padding-bottom: 10px;
+}
+
+/* Menu can giua */
+.navbar .menu {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.navbar .menu a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  padding: 0;
+  line-height: 60px; /* De sat day */
+  border-bottom: 2px solid transparent;  /*Giu cho cho border */
+  transition: border-color 0.2s ease; /* hieu ung muot hon */
+}
+
+.navbar .menu a.active {
+  color: #000;
+  border-bottom: 2px solid orange;
+}
+
+.navbar a:hover {
+  background-color: #eee;
+}
+
+/* Content sections */
+.page {
+  display: none;
+  padding: 20px;
+}
+
+.page.active {
+  display: block;
+}

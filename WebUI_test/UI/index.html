@@ -2,124 +2,147 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>MQTT Dashboard</title>
+    <title>Web Client - MQTT Dashboard</title>
     <style>
-    p {
-      margin-bottom: 0px;
-      margin-top: 0px;
-      line-height: 1.5;
-      color: #555
-    }
+      p {
+        margin-bottom: 0px;
+        margin-top: 0px;
+        line-height: 1.5;
+        color: #555
+      }
     </style>
-    <link rel="stylesheet" href="style.css"> <!--rel = relationship -> Quan he giua trang hien tai & trang lien ket-->
+    <link rel="stylesheet" href="../css/style.css"> <!--rel = relationship -> Quan he giua trang hien tai & trang lien ket-->
+    <link rel="stylesheet" href="../css/navbar.css"> <!-- Style navbar-->
+
     <script src="js/mqttws31.min.js" type="text/javascript"></script> <!--Thu vien MQTT cua JS-->
-    <script src="js/mqtt_process.js" type="text/javascript"></script>
+    <script src="js/connect_process.js" type="text/javascript"></script>
     <script src="js/history_show.js" type="text/javascript"></script>
+    <script src="js/clearLog.js" type="text/javascript"></script>
     <script src="js/toggleConnection.js" type="text/javascript"></script>
   </head>
+  
+  <body>
+    <!-- Thanh navigation -->
+    <div class="navbar">
+      <div class="logo">
+        <img src="images/mqtt-logo-ver.jpg" alt="logo_free">
+        <span class="site-name">LuongHuuPhuc</span>
+      </div>
 
-<body>
-  <div class="wrapper">
-    <div class="header">
-      <h1 id="Main_Heading"> <b>ルオン・フー・フック</b> </h1>
-      <h2 id="Sub_Heading"> <b>MQTT Dashboard</b> </h2>
-      <br><br>
+      <div class="menu">
+        <a href="overview.html">Overview</a>
+        <a href="settings.html">Settings</a>
+        <a href="index.html" class="active">Web Client</a>
+      </div>
     </div>
 
-    <h2>MQTT Client Web</h2>
-    <p>Connect to MQTT broker and subscribe to a topic to receive messages.</p>
-    <p><em>MQTTブローカーに接続し、トピックを購読してメッセージを受信します。</em></p>
-    <br>
-    
-    <form id="Connection-information-form">
-      <strong style="color: green">Hostname or IP Address and Port Number</strong>
+    <!-- <script src="js/navbar.js" type="text/javascript"></script> -->
 
-      <!--Broker-->
-      <label for="broker"><p><i>Broker Address: HiveMQ, Mosquitto,...</i></p></label>
-      <div style="position: relative;"> <!--Danh dau vung chua, vi tri moc cho position: absolute-->
-        <input id="broker" 
-              name="broker" 
-              type="text" 
-              value="" 
-              placeholder="Broker address" 
-              oninput="handleInput(this)" 
-              onfocus="showHistory(this)"><br>
-        <ul id="history-broker" class="history-list"></ul> <!--Lam 1 bang hien thi ngay duoi input-->
+    <!-- Noi dung rieng cua Web client -->
+    <div class="wrapper">
+      <div class="header">
+        <h1 id="Main_Heading"> <b>ルオン・フー・フック</b> </h1>
+        <h2 id="Sub_Heading"> <b>MQTT Dashboard</b> </h2>
+        <br><br>
       </div>
 
-      <!--Port-->
-      <label for="port">Port:</label>
-      <div style="position: relative;">
-        <input id="port" 
-              name="port" 
-              type="text" 
-              value="" 
-              placeholder="8883..." 
-              oninput="handleInput(this)" 
-              onfocus="showHistory(this)"><br>
-        <ul class="history-list" id="history-port"></ul>
-      </div>
-
-
-      <strong style="color: green">Username and Password</strong>
-
-      <!--Username-->
-      <label for="username"></label>
-      <input id="username" 
-            name="username" 
-            type="text" 
-            placeholder="Username" 
-            value="" 
-            oninput="handleInput(this)" 
-            onfocus="showHistory(this)"><br>
-      <ul class="history-list" id="history-username"></ul>
-
-      <!--Password-->
-      <label for="password"></label>
-      <input id="password" 
-            name="password" 
-            type="password" 
-            placeholder="Password" 
-            value="" 
-            oninput="handleInput(this)" 
-            onfocus="showHistory(this)"><br>
-      <ul class="history-list" id="history-password"></ul>
-
-      <!--Nut Connect & Disconnect-->
-      <input id="connect-btn" type="button" value="Connect" onclick="toggleConnection()"><br>
-
-
-      <b style="color: green">Subscription Topic</b>
-      <p><i>
-        This is Topic which you want receive data from MQTT Broker.<br>
-        これは、MQTTブローカからデータを受信したいトピックです。
-      </i></p>
-
-      <input id="topic_s" name="topic_s" type="text" value="" placeholder="Subscribe Topic"><br>
+      <h2>MQTT Client Web</h2>
+      <p>Connect to MQTT broker and subscribe to a topic to receive messages.</p>
+      <p><em>MQTTブローカーに接続し、トピックを購読してメッセージを受信します。</em></p>
+      <br>
       
-      <!--Nut Subscribe-->
-      <input id="subscribe" value="Subscribe" type="button" onclick="subscribeToTopic()"><br>
+      <form id="Connection-information-form">
+        <strong style="color: green">Hostname or IP Address and Port Number</strong>
 
-      <b style="color: green">Publish Topic and Send Message</b>
-      <input id="topic_p" name="topic_p" type="text" value="" placeholder="Publish Topic"><br>
-      <input id="Message" name="message" type="text" value="" placeholder="Message to publish"><br>
-      <input type="button" value="Send Message" onclick="publishMessage()"><br>
-    </form>
+        <!--Broker-->
+        <label for="broker"><p><i>Broker Address: HiveMQ, Mosquitto,...</i></p></label>
+        <div style="position: relative;"> <!--Danh dau vung chua, vi tri moc cho position: absolute-->
+          <input id="broker" 
+                name="broker" 
+                type="text" 
+                value="" 
+                placeholder="Broker address" 
+                oninput="handleInput(this)" 
+                onfocus="showHistory(this)"><br>
+          <ul id="history-broker" class="history-list"></ul> <!--Lam 1 bang hien thi ngay duoi input-->
+        </div>
+
+        <!--Port-->
+        <label for="port">Port:</label>
+        <div style="position: relative;">
+          <input id="port" 
+                name="port" 
+                type="text" 
+                value="" 
+                placeholder="8883..." 
+                oninput="handleInput(this)" 
+                onfocus="showHistory(this)"><br>
+          <ul class="history-list" id="history-port"></ul>
+        </div>
 
 
-    <!--Khung hien thong bao-->
-    <div id="messages"></div>
+        <strong style="color: green">Username and Password</strong>
 
-    <div id="history-messages">
-      <h3>History Publish Messages</h3>
-      <table id="history-table">
-        <thead>
-          <tr><th>Messages</th></tr>
-        </thead>
-        <tbody id="history-body"></tbody>
-      </table>
+        <!--Username-->
+        <label for="username"></label>
+        <input id="username" 
+              name="username" 
+              type="text" 
+              placeholder="Username" 
+              value="" 
+              oninput="handleInput(this)" 
+              onfocus="showHistory(this)"><br>
+        <ul class="history-list" id="history-username"></ul>
+
+        <!--Password-->
+        <label for="password"></label>
+        <input id="password" 
+              name="password" 
+              type="password" 
+              placeholder="Password" 
+              value="" 
+              oninput="handleInput(this)" 
+              onfocus="showHistory(this)"><br>
+        <ul class="history-list" id="history-password"></ul>
+
+        <!--Nut Connect & Disconnect-->
+        <input id="connect-btn" type="button" value="Connect" onclick="toggleConnection()"><br>
+
+
+        <b style="color: green">Subscription Topic</b>
+        <p><i>
+          This is Topic which you want receive data from MQTT Broker.<br>
+          これは、MQTTブローカからデータを受信したいトピックです。
+        </i></p>
+
+        <input id="topic_s" name="topic_s" type="text" value="" placeholder="Subscribe Topic"><br>
+        
+        <!--Nut Subscribe-->
+        <input id="subscribe" value="Subscribe" type="button" onclick="subscribeToTopic()"><br>
+
+        <b style="color: green">Publish Topic and Send Message</b>
+        <input id="topic_p" name="topic_p" type="text" value="" placeholder="Publish Topic"><br>
+        <input id="Message" name="message" type="text" value="" placeholder="Message to publish"><br>
+        <input type="button" value="Send Message" onclick="publishMessage()"><br>
+      </form>
+
+
+      <!--Khung hien thong bao-->
+      <div id="messages"></div>
+
+      <!-- Clear log -->
+        <input type="button" value="Clear log" onclick="clearLog()">
+
+      <div id="history-messages">
+        <h3>History Publish Messages</h3>
+        <table id="history-table">
+          <thead>
+            <tr><th>Messages</th></tr>
+          </thead>
+          <tbody id="history-body"></tbody>
+        </table>
+      </div>
+      
     </div>
-    
-  </div>
-</body>
+  </body>
 </html>
