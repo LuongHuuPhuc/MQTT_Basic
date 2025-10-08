@@ -7,8 +7,15 @@ Socket là đối tượng đại diện cho *kênh truyền tải* trong mạng
 * Socket giống như một cổng ảo để giao tiếp giữa hai thiết bị trong mạng
 * Nó giống như cái "cửa" qua đó dữ liệu đi vào và đi ra 
 * Lập trình socket thường dùng trong các ngôn ngữ như C, Python, Java, Node.js,...
+* Socket là sự kết hợp của 1 địa chỉ IP (IP Address) của Network Layer và 1 địa chỉ cổng (Port Address) của Transport Layer.
+  - Địa chỉ IP: là địa chỉ trên Network Layer (ví dụ: `192.0.2.1`) được sử dụng để nhận dạng và định vị một thiết bị trong mạng
+  - Địa chỉ cổng: là một số nguyên 16-bit được gán cho một ứng dụng cụ thể trên thiết bị đó. Nhiều tiến trình có thể chạy trên 1 máy chủ nhưng mỗi tiến trình sẽ lắng nghe trên 1 cổng khác nhau, nhờ đó hệ điều hành có thể phân biệt định tuyến dữ liệu đến đúng tiến trình
+  - Ví dụ: 
+    - Giả sử có một máy chủ chạy với địa chỉ IP `192.0.2.1`
+    - Máy chủ này chạy một tiến trình cho web server lắng nghe trên cổng 80 (cổng chuẩn cho HTTP) và một tiến trình mail server lắng nghe trên cổng 25 (cổng chuẩn cho SMTP)
+    - Mỗi "socket" sẽ là sự kết hợp của địa chỉ IP và số cổng, ví dụ: `192.0.2.1:80` cho web server và `192.0.2.1:25" cho mail server
 
-→ Socket hoạt động dựa trên TCP hoặc UDP.
+→ Socket hoạt động dựa trên TCP hoặc UDP (nằm ở Transport Layer).
 
 ## 2. Giao thức TCP (Transmission Control Protocol) - Giao thức truyền tin đáng tin cậy ##
 * Kết nối hướng kết nối (connection-oriented) -> phải "bắt tay" (handshake) trước khi truyền tải dữ liệu, hay còn được biết đến với cái tên Three-way handshake. 
@@ -30,7 +37,7 @@ Socket là đối tượng đại diện cho *kênh truyền tải* trong mạng
 🔴 Nhược điểm: Dễ mất gói, không đáng tin cậy.
 
 ## 4. MQTT trên TCP ##
-* MQTT là giao thức truyền tin chạy trên nền TCP 
+* MQTT là giao thức truyền tin chạy trên nền TCP (giáo thức truyền tin của Transport Layer)
 * MQTT rất nhẹ, lý tưởng cho thiết bị IoT 
 * Khi dùng MQTT (ví dụ như HiveMQ hay Mosquitto,...), bản chất bên dưới là: 
   * Dùng socket TCP để mở kết nối
